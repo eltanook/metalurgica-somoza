@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Phone } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { ScrollAnimation } from "@/components/scroll-animation"
 
@@ -20,8 +21,8 @@ export function HeroSection() {
       {/* Dark overlay - reduced opacity for better image visibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80 dark:from-background/90 dark:via-background/80 dark:to-background" />
 
-      {/* Grid pattern with cyan color */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* Grid pattern with cyan color - darker in light mode */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.15)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       {/* Bottom gradient for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
@@ -44,7 +45,7 @@ export function HeroSection() {
 
         {/* Headline */}
         <ScrollAnimation direction="up" delay={100}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-4 md:mb-6 text-balance max-w-4xl mx-auto leading-tight uppercase tracking-wide">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground/95 dark:text-foreground mb-4 md:mb-6 text-balance max-w-4xl mx-auto leading-tight uppercase tracking-wide">
             Soluciones industriales a medida desde{" "}
             <span className="text-accent">1959</span>
           </h1>
@@ -52,7 +53,7 @@ export function HeroSection() {
 
         {/* Subheadline */}
         <ScrollAnimation direction="up" delay={200}>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed text-pretty px-2">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/75 dark:text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed text-pretty px-2">
             Más de 65 años de experiencia en mecanizado de piezas especiales, repuestos industriales y diseño de dispositivos para líneas de montaje.
           </p>
         </ScrollAnimation>
@@ -66,9 +67,9 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-[200px] bg-transparent">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-[200px] bg-background dark:bg-transparent border-foreground/20 dark:border-border text-foreground dark:text-foreground hover:bg-foreground/10 dark:hover:bg-accent/10">
               <a href="https://wa.me/5491155632312" target="_blank" rel="noopener noreferrer">
-                <Phone className="mr-2 h-4 w-4" />
+                <FaWhatsapp className="mr-2 h-5 w-5" />
                 WhatsApp
               </a>
             </Button>
