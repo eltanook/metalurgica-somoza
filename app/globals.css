@@ -179,4 +179,15 @@
   .dark ::-webkit-scrollbar-thumb:hover {
     background: oklch(0.45 0.05 250);
   }
+  
+  /* Custom text selection color - uses accent color */
+  ::selection {
+    background-color: oklch(0.45 0.15 220 / 0.3);
+    color: oklch(0.15 0.03 250);
+  }
+  
+  .dark ::selection {
+    background-color: oklch(0.55 0.15 220 / 0.4);
+    color: oklch(0.98 0.002 250);
+  }
 }

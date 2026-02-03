@@ -76,15 +76,11 @@ export function ServicesCardsSection() {
           }}
         />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
+        {/* Dark overlay - improved visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80 dark:from-background/95 dark:via-background/85 dark:to-background" />
 
-        {/* Grid pattern with cyan color and horizontal blur fade */}
+        {/* Grid pattern with cyan color */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        {/* Horizontal blur fade (vignette on sides) */}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,22,40,0.9)_0%,transparent_15%,transparent_85%,rgba(10,22,40,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(10,22,40,0.9)_0%,transparent_15%,transparent_85%,rgba(10,22,40,0.9)_100%)]" />
-        {/* Bottom gradient for smooth transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
 
         <div className="container relative mx-auto px-4 py-20">
           <ScrollAnimation direction="up">

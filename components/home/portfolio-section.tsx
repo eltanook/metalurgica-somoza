@@ -133,11 +133,6 @@ export function PortfolioSection() {
         {/* Horizontal Scroll */}
         <ScrollAnimation direction="up" delay={100}>
           <div className="relative">
-            {/* Left blur */}
-            <div className="absolute left-0 top-0 bottom-6 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-
-            {/* Right blur */}
-            <div className="absolute right-0 top-0 bottom-6 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
             <div
               ref={scrollRef}
