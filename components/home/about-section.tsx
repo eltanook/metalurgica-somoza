@@ -48,12 +48,20 @@ export function AboutSection() {
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Utilizamos tecnología CNC y desarrollamos soluciones adaptadas a cada cliente. Acompañamos tanto a grandes empresas como a pymes que requieren mecanizados complejos.
               </p>
-              <Button asChild>
-                <Link href="/nosotros">
-                  Conocer más
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild>
+                  <Link href="/nosotros">
+                    Conocer más
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/contacto">
+                    Enviar mensaje
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </ScrollAnimation>
 

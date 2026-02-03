@@ -49,8 +49,8 @@ export function HistorySection() {
 
         {/* Dark overlay - improved visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/55 to-background/75 dark:from-background/90 dark:via-background/80 dark:to-background" />
-        {/* Grid pattern with cyan color - darker in light mode */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.15)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        {/* Grid pattern - black in light mode, cyan in dark mode */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.12)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
         {/* Bottom gradient for smooth transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
 
@@ -60,10 +60,12 @@ export function HistorySection() {
               <span className="text-accent font-medium text-sm tracking-wider uppercase mb-4 block">
                 Nuestra historia
               </span>
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 text-balance uppercase tracking-wide">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-3 text-balance uppercase tracking-wide">
                 Tradición y tecnología desde 1959
               </h1>
-              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
+              {/* Animated accent hr */}
+              <div className="w-24 h-1 bg-accent mx-auto mb-6 animate-pulse" />
+              <p className="text-foreground/75 dark:text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
                 Metalúrgica Somoza es una empresa familiar con más de 65 años de experiencia en mecanizado de piezas especiales, repuestos industriales y diseño de dispositivos para líneas de montaje.
               </p>
             </div>

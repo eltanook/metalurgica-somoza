@@ -21,8 +21,8 @@ export function HeroSection() {
       {/* Dark overlay - reduced opacity for better image visibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80 dark:from-background/90 dark:via-background/80 dark:to-background" />
 
-      {/* Grid pattern with cyan color - darker in light mode */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.15)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* Grid pattern - black in light mode, cyan in dark mode */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.12)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       {/* Bottom gradient for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
@@ -58,37 +58,54 @@ export function HeroSection() {
           </p>
         </ScrollAnimation>
 
-        {/* CTA Buttons */}
-        <ScrollAnimation direction="up" delay={300}>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-            <Button asChild size="lg" className="w-full sm:w-auto sm:min-w-[200px]">
-              <Link href="/contacto">
-                Solicitar cotización
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-[200px] bg-background dark:bg-transparent border-foreground/20 dark:border-border text-foreground dark:text-foreground hover:bg-foreground/10 dark:hover:bg-accent/10">
-              <a href="https://wa.me/5491155632312" target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp className="mr-2 h-5 w-5" />
-                WhatsApp
-              </a>
-            </Button>
-          </div>
-        </ScrollAnimation>
-
         {/* Trust badges */}
         <ScrollAnimation direction="up" delay={400}>
           <div className="mt-12 md:mt-16">
             <p className="text-sm sm:text-base text-muted-foreground mb-6 md:mb-8">Confían en nosotros</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-16">
-              {["Ford", "Toyota", "Tubos Argentinos", "Galileo Technologies"].map((client) => (
-                <span
-                  key={client}
-                  className="text-muted-foreground/70 font-semibold text-lg sm:text-xl md:text-2xl lg:text-3xl hover:text-foreground transition-colors"
-                >
-                  {client}
-                </span>
-              ))}
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 px-4">
+              {/* Ford */}
+              <div className="h-12 sm:h-14 md:h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Image
+                  src="/ford.png"
+                  alt="Ford"
+                  width={120}
+                  height={64}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+
+              {/* Toyota */}
+              <div className="h-12 sm:h-14 md:h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Image
+                  src="/toyota.png"
+                  alt="Toyota"
+                  width={120}
+                  height={64}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+
+              {/* Tubos Argentinos */}
+              <div className="h-12 sm:h-14 md:h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Image
+                  src="/tubos-argentinos.png"
+                  alt="Tubos Argentinos"
+                  width={140}
+                  height={64}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+
+              {/* Galileo Technologies */}
+              <div className="h-12 sm:h-14 md:h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Image
+                  src="/galileo.png"
+                  alt="Galileo Technologies"
+                  width={140}
+                  height={64}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </ScrollAnimation>
