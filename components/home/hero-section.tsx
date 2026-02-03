@@ -58,11 +58,13 @@ export function HeroSection() {
           </p>
         </ScrollAnimation>
 
-        {/* Trust badges */}
+        {/* Trust badges - Auto-scrolling carousel */}
         <ScrollAnimation direction="up" delay={400}>
           <div className="mt-12 md:mt-16">
             <p className="text-sm sm:text-base text-muted-foreground mb-6 md:mb-8">Confían en nosotros</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 px-4">
+
+            {/* Desktop: static grid */}
+            <div className="hidden md:flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 px-4">
               {/* Ford */}
               <div className="h-12 sm:h-14 md:h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
                 <Image
@@ -105,6 +107,96 @@ export function HeroSection() {
                   height={64}
                   className="h-full w-auto object-contain"
                 />
+              </div>
+            </div>
+
+            {/* Mobile: auto-scrolling carousel with blur edges */}
+            <div className="md:hidden relative">
+              {/* Left blur */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+
+              {/* Right blur */}
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+              {/* Auto-scrolling carousel */}
+              <div className="overflow-hidden">
+                <div className="flex gap-12 animate-scroll-logos">
+                  {/* First set */}
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/ford.png"
+                      alt="Ford"
+                      width={120}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/toyota.png"
+                      alt="Toyota"
+                      width={120}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/tubos-argentinos.png"
+                      alt="Tubos Argentinos"
+                      width={140}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/galileo.png"
+                      alt="Galileo Technologies"
+                      width={140}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+
+                  {/* Duplicate for seamless loop */}
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/ford.png"
+                      alt="Ford"
+                      width={120}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/toyota.png"
+                      alt="Toyota"
+                      width={120}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/tubos-argentinos.png"
+                      alt="Tubos Argentinos"
+                      width={140}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                  <div className="flex-shrink-0 h-12 w-auto">
+                    <Image
+                      src="/galileo.png"
+                      alt="Galileo Technologies"
+                      width={140}
+                      height={64}
+                      className="h-full w-auto object-contain opacity-70"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
