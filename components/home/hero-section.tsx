@@ -121,81 +121,47 @@ export function HeroSection() {
               {/* Auto-scrolling carousel */}
               <div className="overflow-hidden">
                 <div className="flex gap-12 animate-scroll-logos">
-                  {/* First set */}
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/ford.png"
-                      alt="Ford"
-                      width={120}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/toyota.png"
-                      alt="Toyota"
-                      width={120}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/tubos-argentinos.png"
-                      alt="Tubos Argentinos"
-                      width={140}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/galileo.png"
-                      alt="Galileo Technologies"
-                      width={140}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-
-                  {/* Duplicate for seamless loop */}
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/ford.png"
-                      alt="Ford"
-                      width={120}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/toyota.png"
-                      alt="Toyota"
-                      width={120}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/tubos-argentinos.png"
-                      alt="Tubos Argentinos"
-                      width={140}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
-                  <div className="flex-shrink-0 h-12 w-auto">
-                    <Image
-                      src="/galileo.png"
-                      alt="Galileo Technologies"
-                      width={140}
-                      height={64}
-                      className="h-full w-auto object-contain opacity-70"
-                    />
-                  </div>
+                  {/* Repeat logos 3 times for seamless infinite scroll */}
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-12 flex-shrink-0">
+                      <div className="flex-shrink-0 h-12 w-auto">
+                        <Image
+                          src="/ford.png"
+                          alt="Ford"
+                          width={120}
+                          height={64}
+                          className="h-full w-auto object-contain opacity-70"
+                        />
+                      </div>
+                      <div className="flex-shrink-0 h-12 w-auto">
+                        <Image
+                          src="/toyota.png"
+                          alt="Toyota"
+                          width={120}
+                          height={64}
+                          className="h-full w-auto object-contain opacity-70"
+                        />
+                      </div>
+                      <div className="flex-shrink-0 h-12 w-auto">
+                        <Image
+                          src="/tubos-argentinos.png"
+                          alt="Tubos Argentinos"
+                          width={140}
+                          height={64}
+                          className="h-full w-auto object-contain opacity-70"
+                        />
+                      </div>
+                      <div className="flex-shrink-0 h-12 w-auto">
+                        <Image
+                          src="/galileo.png"
+                          alt="Galileo Technologies"
+                          width={140}
+                          height={64}
+                          className="h-full w-auto object-contain opacity-70"
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
