@@ -40,24 +40,24 @@
 }
 
 .dark {
-  --background: oklch(0.12 0.03 250);
-  --foreground: oklch(0.95 0.01 250);
-  --card: oklch(0.16 0.035 250);
-  --card-foreground: oklch(0.95 0.01 250);
-  --popover: oklch(0.16 0.035 250);
-  --popover-foreground: oklch(0.95 0.01 250);
-  --primary: oklch(0.95 0.01 250);
-  --primary-foreground: oklch(0.12 0.03 250);
-  --secondary: oklch(0.22 0.04 250);
-  --secondary-foreground: oklch(0.95 0.01 250);
-  --muted: oklch(0.22 0.04 250);
-  --muted-foreground: oklch(0.65 0.02 250);
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.16 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.16 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.65 0 0);
   --accent: oklch(0.55 0.15 220);
-  --accent-foreground: oklch(0.95 0.01 250);
+  --accent-foreground: oklch(0.95 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.25 0.04 250);
-  --input: oklch(0.25 0.04 250);
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.25 0 0);
   --ring: oklch(0.55 0.15 220);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -192,16 +192,16 @@
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: oklch(0.18 0.03 250);
+    background: oklch(0.18 0 0);
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    background: oklch(0.35 0.04 250);
-    border-color: oklch(0.18 0.03 250);
+    background: oklch(0.35 0 0);
+    border-color: oklch(0.18 0 0);
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.45 0.05 250);
+    background: oklch(0.45 0 0);
   }
 
   /* Custom text selection color - uses accent color */
@@ -243,5 +243,28 @@
 
   .animate-scroll-logos:hover {
     animation-play-state: paused;
+  }
+}
+
+@layer components {
+  .btn-metallic {
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid;
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(to bottom, oklch(0.45 0.15 220), oklch(0.55 0.15 220));
+    border-color: oklch(0.35 0.15 220);
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-metallic:hover {
+    filter: brightness(110%);
+  }
+
+  .dark .btn-metallic {
+    background: linear-gradient(to bottom, oklch(0.6 0 0), oklch(0.95 0 0));
+    border-color: #ffffff;
+    color: #111111;
+    text-shadow: none;
   }
 }
