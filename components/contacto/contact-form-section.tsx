@@ -44,17 +44,15 @@ export function ContactFormSection() {
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=2070&auto=format&fit=crop')",
+            backgroundImage: "url('/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg')",
           }}
         />
 
-        {/* Dark overlay - improved visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/55 to-background/75 dark:from-background/95 dark:via-background/85 dark:to-background" />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-background/55 dark:bg-background/80" />
 
-        {/* Grid pattern - black in light mode, cyan in dark mode */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.12)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        {/* Bottom gradient for smooth transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
         <div className="container relative mx-auto px-4 py-20">
           <ScrollAnimation direction="up">
@@ -63,12 +61,12 @@ export function ContactFormSection() {
                 Contacto
               </span>
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-3 text-balance uppercase tracking-wide">
-                Hablemos de su proyecto
+                Solicite su cotización hoy
               </h1>
               {/* Animated accent hr */}
               <div className="w-24 h-1 bg-accent mx-auto mb-6 animate-pulse" />
               <p className="text-foreground/75 dark:text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
-                Atención personalizada y cotizaciones sin cargo. Complete el formulario y nos pondremos en contacto a la brevedad.
+                Trabajamos con planos, muestras y requerimientos específicos para el mantenimiento industrial y la fabricación de piezas de precisión.
               </p>
             </div>
           </ScrollAnimation>

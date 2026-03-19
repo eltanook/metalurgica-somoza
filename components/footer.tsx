@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/nosotros", label: "Nosotros" },
   { href: "/servicios", label: "Servicios" },
   { href: "/contacto", label: "Contacto" },
+  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
 ]
 
 export function Footer() {
@@ -19,30 +20,28 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-12">
+    // sticky bottom + z-0 so content scrolls over it, revealing footer from below
+    <footer className="footer-metallic sticky bottom-0 z-0 border-t border-border">
+      <div className="container mx-auto px-4 py-28">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo & Description */}
           <div className="space-y-4">
             <button
               onClick={scrollToTop}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-              aria-label="Volver al inicio"
             >
               <div className="w-10 h-10 relative">
                 <Image
                   src="/logo.png"
-                  alt="Metalúrgica Somoza Logo"
+                  alt="Metalúrgica Somoza - Soluciones Industriales y Metalmecánica"
                   fill
                   className="object-contain invert dark:invert-0"
                 />
               </div>
-              <span className="text-foreground font-medium">
-                Metalúrgica Somoza
-              </span>
+              <span className="text-foreground font-semibold">Metalúrgica Somoza</span>
             </button>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Soluciones industriales a medida desde 1959. Más de 65 años de experiencia en mecanizado de precisión y desarrollo de dispositivos industriales.
+              Más de 65 años de excelencia en el sector metalmecánico. Precisión, compromiso y soluciones industriales a medida en Versalles, CABA.
             </p>
           </div>
 
@@ -103,7 +102,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-xs">
-            {new Date().getFullYear()} Metalúrgica Somoza. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Metalúrgica Somoza. Todos los derechos reservados.
           </p>
           <p className="text-muted-foreground text-xs">
             Servicios: AMBA y zonas industriales

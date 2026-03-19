@@ -1,6 +1,6 @@
-import { HistorySection } from "@/components/nosotros/history-section"
-import { VideosAlternatingSection } from "@/components/nosotros/videos-alternating-section"
+import { HistoryHeaderSection, HistoryTimelineSection } from "@/components/nosotros/history-section"
 import { MachinesSection } from "@/components/nosotros/machines-section"
+import { AboutTextSection } from "@/components/nosotros/about-text-section"
 
 export const metadata = {
   title: "65 Años de Experiencia en Mecanizado CNC | Nuestra Historia",
@@ -15,8 +15,13 @@ export const metadata = {
 export default function NosotrosPage() {
   return (
     <>
-      <HistorySection />
-      <VideosAlternatingSection />
+      {/* 1. Header with bg image + stats */}
+      <HistoryHeaderSection />
+      {/* 2. Quiénes somos — BETWEEN header and timeline */}
+      <AboutTextSection />
+      {/* 3. Timeline de trayectoria */}
+      <HistoryTimelineSection />
+      {/* 4. Nuestras máquinas */}
       <MachinesSection />
     </>
   )

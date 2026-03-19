@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Cog, CircleDot, Factory, Wrench, Flame } from "lucide-react"
+import { ArrowRight, Cog, CircleDot, Factory, Wrench, Flame, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollAnimation } from "@/components/scroll-animation"
 
@@ -72,17 +72,13 @@ export function ServicesCardsSection() {
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop')",
+            backgroundImage: "url('/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.jpg')",
           }}
         />
-
-        {/* Dark overlay - improved visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/55 to-background/75 dark:from-background/95 dark:via-background/85 dark:to-background" />
-
-        {/* Grid pattern - black in light mode, cyan in dark mode */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.12)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        {/* Bottom gradient for smooth transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-background/50 dark:bg-background/80" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
         <div className="container relative mx-auto px-4 py-20">
           <ScrollAnimation direction="up">
@@ -103,7 +99,7 @@ export function ServicesCardsSection() {
         </div>
       </div>
 
-      {/* Services Grid */}
+      {/* Services Grid — 5 service cards + 1 CTA card */}
       <div className="container mx-auto px-4 py-20 md:py-28">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
@@ -136,8 +132,39 @@ export function ServicesCardsSection() {
               </div>
             </ScrollAnimation>
           ))}
+
+          {/* 6th card: CTA — accent-styled */}
+          <ScrollAnimation direction="up" delay={500}>
+            <div className="relative bg-accent/10 border-2 border-accent/40 rounded-lg p-6 hover:border-accent transition-colors group flex flex-col h-full overflow-hidden">
+              {/* Subtle pattern */}
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.04)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none" />
+              <div className="relative flex flex-col flex-1">
+                <MessageCircle className="h-12 w-12 text-accent mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  ¿Necesita algo diferente?
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
+                  Trabajamos con todo tipo de proyectos industriales a medida. Consultenos y encontraremos la solución adecuada para su necesidad específica.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  {["Proyectos a medida", "Respuesta rápida", "Presupuesto sin cargo", "Asesoramiento técnico"].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="w-full mt-auto">
+                  <Link href="/contacto">
+                    Contactar ahora
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </ScrollAnimation>
         </div>
       </div>
-    </section >
+    </section>
   )
 }

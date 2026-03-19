@@ -34,25 +34,18 @@ const stats = [
   { icon: Target, value: 100, prefix: "", suffix: "%", label: "Compromiso" },
 ]
 
-export function HistorySection() {
+/** Header + stats card only (no timeline). Used in nosotros page as the first block. */
+export function HistoryHeaderSection() {
   return (
     <section className="relative">
       {/* Header with fixed background */}
       <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        {/* Fixed background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: "url('/images/nosotros-header-bg.jpg')",
-          }}
+          style={{ backgroundImage: "url('/images/josh-beech-tXJhAFVOHVk-unsplash.jpg')" }}
         />
-
-        {/* Dark overlay - improved visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/55 to-background/75 dark:from-background/90 dark:via-background/80 dark:to-background" />
-        {/* Grid pattern - black in light mode, cyan in dark mode */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.12)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        {/* Bottom gradient for smooth transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-background/50 dark:bg-background/75" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
         <div className="container relative mx-auto px-4 py-20">
           <ScrollAnimation direction="up">
@@ -63,7 +56,6 @@ export function HistorySection() {
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-3 text-balance uppercase tracking-wide">
                 Tradición y tecnología desde 1959
               </h1>
-              {/* Animated accent hr */}
               <div className="w-24 h-1 bg-accent mx-auto mb-6 animate-pulse" />
               <p className="text-foreground/75 dark:text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
                 Metalúrgica Somoza es una empresa familiar con más de 65 años de experiencia en mecanizado de piezas especiales, repuestos industriales y diseño de dispositivos para líneas de montaje.
@@ -73,21 +65,16 @@ export function HistorySection() {
         </div>
       </div>
 
-      {/* Stats - positioned to overlap with header background */}
-      <div className="relative -mt-20 pb-20">
+      {/* Stats — overlapping card row */}
+      <div className="relative -mt-20 pb-0">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <ScrollAnimation key={stat.label} direction="up" delay={index * 100}>
                 <div className="bg-card border border-border rounded-lg p-6 text-center hover:border-accent/50 transition-colors shadow-lg">
                   <stat.icon className="h-8 w-8 text-accent mx-auto mb-3" />
                   <p className="text-3xl font-serif font-bold text-foreground mb-1">
-                    <CounterUp
-                      end={stat.value}
-                      prefix={stat.prefix}
-                      suffix={stat.suffix}
-                      duration={2000}
-                    />
+                    <CounterUp end={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={2000} />
                   </p>
                   <p className="text-muted-foreground text-sm">{stat.label}</p>
                 </div>
@@ -96,9 +83,15 @@ export function HistorySection() {
           </div>
         </div>
       </div>
+    </section>
+  )
+}
 
-      {/* Timeline */}
-      <div className="container mx-auto px-4 pb-20">
+/** Timeline only — used after AboutTextSection in nosotros page. */
+export function HistoryTimelineSection() {
+  return (
+    <section className="py-20">
+      <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <ScrollAnimation direction="up">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-10 text-center uppercase tracking-wide">
@@ -106,29 +99,16 @@ export function HistorySection() {
             </h2>
           </ScrollAnimation>
           <div className="relative">
-            {/* Line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
-
-            {/* Milestones */}
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <ScrollAnimation key={milestone.year} direction={index % 2 === 0 ? "left" : "right"} delay={index * 100}>
-                  <div
-                    className={`relative flex items-start gap-6 md:gap-12 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                      }`}
-                  >
-                    {/* Dot */}
+                  <div className={`relative flex items-start gap-6 md:gap-12 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                     <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-accent rounded-full -translate-x-1/2 mt-1.5" />
-
-                    {/* Content */}
                     <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                       <span className="text-accent font-bold text-lg">{milestone.year}</span>
-                      <h3 className="text-foreground font-semibold mt-1 mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {milestone.description}
-                      </p>
+                      <h3 className="text-foreground font-semibold mt-1 mb-2">{milestone.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{milestone.description}</p>
                     </div>
                   </div>
                 </ScrollAnimation>
@@ -138,5 +118,15 @@ export function HistorySection() {
         </div>
       </div>
     </section>
+  )
+}
+
+/** @deprecated Use HistoryHeaderSection + HistoryTimelineSection separately */
+export function HistorySection() {
+  return (
+    <>
+      <HistoryHeaderSection />
+      <HistoryTimelineSection />
+    </>
   )
 }

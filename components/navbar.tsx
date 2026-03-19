@@ -49,7 +49,7 @@ export function Navbar() {
               priority
             />
           </div>
-          <span className="hidden sm:block text-foreground font-medium">
+          <span className="hidden min-[440px]:block text-foreground font-medium">
             Metalúrgica Somoza
           </span>
         </Link>

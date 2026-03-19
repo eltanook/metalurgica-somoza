@@ -17,12 +17,15 @@ export const metadata: Metadata = {
     default: 'Metalúrgica Somoza | Soluciones Industriales a Medida desde 1959',
     template: '%s | Metalúrgica Somoza',
   },
-  description: 'Empresa familiar con más de 65 años de experiencia en mecanizado CNC, fresado, torneado, soldadura y fabricación de dispositivos industriales. Atendemos a Ford, Toyota, Galileo Technologies y más de 100 empresas en AMBA. Cotización sin cargo.',
+  description: 'Empresa familiar con más de 65 años en el sector metalmecánico. Especialistas en mecanizado CNC, fresado, torneado, soldadura y fabricación de piezas industriales de alta precisión en Versalles, CABA. Atendemos a Ford, Toyota y Galileo. Cotizaciones en 24hs.',
   generator: 'v0.app',
   keywords: [
     // Servicios principales
     'metalúrgica Buenos Aires', 'mecanizado CNC CABA', 'fresado CNC Argentina', 'torneado CNC precisión',
     'soldadura industrial AMBA', 'taller metalúrgico Villa Luro', 'mecanizado de precisión',
+    // RECIÉN AGREGADAS
+    'metalúrgica Versalles', 'metalúriga Versalles', 'metalmecánica', 'metalmecanicas', 'metalúrgica CABA',
+    'taller metalúrgico CABA', 'mecanizado industrial Argentina', 'piezas de precisión metalúrgica',
     // Long-tail keywords
     'fresado CNC 3 ejes', 'fresado CNC 4 ejes', 'fresado CNC 5 ejes', 'torneado CNC gran diámetro',
     'soldadura MIG TIG', 'soldadura acero inoxidable', 'rectificado industrial',
@@ -118,7 +121,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="min-h-screen pt-16">
+          <main className="relative z-10 min-h-screen pt-16 pb-32 bg-background shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
             {children}
           </main>
           <Footer />
