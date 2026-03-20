@@ -52,12 +52,13 @@ export function ScrollAnimation({
     <div
       ref={ref}
       className={cn(
-        "transition-all duration-700 ease-out will-change-[transform,opacity]",
+        "transition-all duration-700 ease-out",
         isVisible
           ? "opacity-100 translate-x-0 translate-y-0"
           : `opacity-0 ${directionClasses[direction]}`,
         className
       )}
+      style={{ willChange: isVisible ? "auto" : "transform, opacity" }}
     >
       {children}
     </div>

@@ -52,7 +52,7 @@ const SLIDE_INTERVAL = 4000
 import useEmblaCarousel from "embla-carousel-react"
 
 function MachineImageCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 })
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 45 })
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(() => {
@@ -62,36 +62,33 @@ function MachineImageCarousel() {
       emblaApi.scrollNext()
     }, SLIDE_INTERVAL)
 
-    const onSelect = () => {
+    emblaApi.on("select", () => {
       setSelectedIndex(emblaApi.selectedScrollSnap())
-    }
-    
-    emblaApi.on("select", onSelect)
-    
-    return () => {
-      clearInterval(interval)
-      emblaApi.off("select", onSelect)
-    }
+    })
+
+    return () => clearInterval(interval)
   }, [emblaApi])
 
-  const scrollTo = (index: number) => {
-    emblaApi?.scrollTo(index)
-  }
+  const scrollTo = (index: number) => emblaApi?.scrollTo(index)
 
   return (
-    <div className="relative rounded-xl overflow-hidden shadow-xl h-full min-h-[300px] md:min-h-[460px] group/carousel">
-      {/* Embla Viewport */}
-      <div className="overflow-hidden h-full cursor-grab active:cursor-grabbing" ref={emblaRef}>
+    <div className="relative rounded-xl overflow-hidden shadow-xl h-full min-h-[300px] md:min-h-[460px] group">
+      {/* Embla Container */}
+      <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
-          {carouselImages.map((src, i) => (
-            <div key={i} className="relative flex-[0_0_100%] min-w-0 h-full">
+          {carouselImages.map((src, index) => (
+            <div
+              key={index}
+              className="relative flex-[0_0_100%] min-w-0 h-full"
+            >
               <Image
                 src={src}
-                alt={`Maquinaria Metalúrgica Somoza ${i + 1}`}
+                alt={`Maquinaria Metalúrgica Somoza ${index + 1}`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover/carousel:scale-105"
+                className="object-cover transition-opacity duration-1000 ease-in-out"
+                style={{ opacity: selectedIndex === index ? 1 : 0 }}
                 sizes="(max-width: 768px) 100vw, 33vw"
-                priority={i === 0}
+                priority={index === 0}
               />
             </div>
           ))}
@@ -102,12 +99,14 @@ function MachineImageCarousel() {
       <div className="absolute inset-0 bg-background/10 pointer-events-none" />
 
       {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 transition-opacity duration-300">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {carouselImages.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === selectedIndex ? "bg-accent w-5" : "bg-white/60 w-1.5 hover:bg-white/90"}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === selectedIndex ? "bg-accent w-5" : "bg-white/60 w-1.5 hover:bg-white/90"
+            }`}
             aria-label={`Imagen ${i + 1}`}
           />
         ))}

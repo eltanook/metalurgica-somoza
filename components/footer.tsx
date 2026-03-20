@@ -100,12 +100,9 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Metalúrgica Somoza. Todos los derechos reservados.
-          </p>
-          <p className="text-muted-foreground text-xs">
-            Servicios: AMBA y zonas industriales
           </p>
           <p className="text-muted-foreground text-xs">
             Diseñado y desarrollado por{" "}
@@ -117,6 +114,9 @@ export function Footer() {
             >
               Zevetix
             </a>
+          </p>
+          <p className="text-muted-foreground text-xs">
+            Servicios: AMBA y zonas industriales
           </p>
         </div>
       </div>

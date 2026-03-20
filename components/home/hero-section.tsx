@@ -17,52 +17,50 @@ const heroImages = [
 const FADE_DURATION = 1200 // ms
 const SLIDE_INTERVAL = 6000 // ms
 
+import useEmblaCarousel from "embla-carousel-react"
+
 export function HeroSection() {
-  const [current, setCurrent] = useState(0)
-  const [next, setNext] = useState<number | null>(null)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 })
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(() => {
+    if (!emblaApi) return
+    
     const interval = setInterval(() => {
-      const nextIdx = (current + 1) % heroImages.length
-      setNext(nextIdx)
-      // After fade-in of next completes, snap current = next and clear next
-      setTimeout(() => {
-        setCurrent(nextIdx)
-        setNext(null)
-      }, FADE_DURATION)
+      emblaApi.scrollNext()
     }, SLIDE_INTERVAL)
+
+    emblaApi.on("select", () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+    })
+
     return () => clearInterval(interval)
-  }, [current])
+  }, [emblaApi])
 
   return (
     <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Base image layer (current) — always visible, optimized with Next.js Image */}
-      <div className="absolute inset-0">
-        <Image
-          src={heroImages[current]}
-          alt="Metalúrgica Somoza Fondo"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+      {/* Background Slides (Embla) */}
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden" ref={emblaRef}>
+        <div className="flex h-full w-full">
+          {heroImages.map((src, index) => (
+            <div
+              key={index}
+              className="relative flex-[0_0_100%] min-w-0 h-full"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center md:bg-fixed transition-opacity duration-1500 ease-in-out"
+                style={{ 
+                  backgroundImage: `url('${src}')`,
+                  opacity: selectedIndex === index ? 1 : 0 
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Transitioning-in image (next) — fades in on top */}
-      {next !== null && (
-        <div className="absolute inset-0 animate-hero-fade-in z-10">
-          <Image
-            src={heroImages[next]}
-            alt="Metalúrgica Somoza Fondo"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-      )}
-
       {/* Dark overlay — sits above both image layers */}
-      <div className="absolute inset-0 bg-background/60 dark:bg-background/80 z-20" />
+      <div className="absolute inset-0 bg-background/60 dark:bg-background/80" />
 
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.10)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.06)_1px,transparent_1px)] bg-[size:60px_60px]" />

@@ -4,7 +4,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    // Enabled by default to allow resizing and format optimization (WebP/AVIF)
+    unoptimized: false,
   },
 }
 
