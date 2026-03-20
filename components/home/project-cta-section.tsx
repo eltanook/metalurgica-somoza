@@ -9,7 +9,7 @@ export function ProjectCTASection() {
     <section className="relative w-full overflow-hidden">
       {/* Fixed background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg')",
         }}

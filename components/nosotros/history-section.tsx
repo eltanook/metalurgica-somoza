@@ -41,7 +41,7 @@ export function HistoryHeaderSection() {
       {/* Header with fixed background */}
       <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/josh-beech-tXJhAFVOHVk-unsplash.jpg')" }}
         />
         <div className="absolute inset-0 bg-background/50 dark:bg-background/75" />
