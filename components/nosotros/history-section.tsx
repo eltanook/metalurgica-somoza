@@ -41,8 +41,8 @@ export function HistoryHeaderSection() {
       {/* Header with fixed background */}
       <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/josh-beech-tXJhAFVOHVk-unsplash.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: "url('/images/josh-beech-tXJhAFVOHVk-unsplash.webp')" }}
         />
         <div className="absolute inset-0 bg-background/50 dark:bg-background/75" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />

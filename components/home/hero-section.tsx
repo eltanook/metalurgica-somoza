@@ -8,56 +8,47 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 import { useEffect, useState } from "react"
 
 const heroImages = [
-  "/images/alerkiv-C2S_2gmmQlw-unsplash.jpg",
-  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg",
-  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.jpg",
-  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.jpg",
+  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.webp",
+  "/images/alerkiv-C2S_2gmmQlw-unsplash.webp",
+  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.webp",
+  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.webp",
 ]
 
 const FADE_DURATION = 1200 // ms
 const SLIDE_INTERVAL = 6000 // ms
 
-import useEmblaCarousel from "embla-carousel-react"
-
 export function HeroSection() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 })
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [current, setCurrent] = useState(0)
+  const [next, setNext] = useState<number | null>(null)
 
   useEffect(() => {
-    if (!emblaApi) return
-    
     const interval = setInterval(() => {
-      emblaApi.scrollNext()
+      const nextIdx = (current + 1) % heroImages.length
+      setNext(nextIdx)
+      // After fade-in of next completes, snap current = next and clear next
+      setTimeout(() => {
+        setCurrent(nextIdx)
+        setNext(null)
+      }, FADE_DURATION)
     }, SLIDE_INTERVAL)
-
-    emblaApi.on("select", () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap())
-    })
-
     return () => clearInterval(interval)
-  }, [emblaApi])
+  }, [current])
 
   return (
     <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Slides (Embla) */}
-      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden" ref={emblaRef}>
-        <div className="flex h-full w-full">
-          {heroImages.map((src, index) => (
-            <div
-              key={index}
-              className="relative flex-[0_0_100%] min-w-0 h-full"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center md:bg-fixed transition-opacity duration-1500 ease-in-out"
-                style={{ 
-                  backgroundImage: `url('${src}')`,
-                  opacity: selectedIndex === index ? 1 : 0 
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Base image layer (current) — always visible, no transition needed */}
+      <div
+        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
+        style={{ backgroundImage: `url('${heroImages[current]}')` }}
+      />
+
+      {/* Transitioning-in image (next) — fades in on top */}
+      {next !== null && (
+        <div
+          className="absolute inset-0 bg-cover bg-center md:bg-fixed animate-hero-fade-in"
+          style={{ backgroundImage: `url('${heroImages[next]}')` }}
+        />
+      )}
 
       {/* Dark overlay — sits above both image layers */}
       <div className="absolute inset-0 bg-background/60 dark:bg-background/80" />

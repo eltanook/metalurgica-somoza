@@ -58,7 +58,6 @@ export function ScrollAnimation({
           : `opacity-0 ${directionClasses[direction]}`,
         className
       )}
-      style={{ willChange: isVisible ? "auto" : "transform, opacity" }}
     >
       {children}
     </div>

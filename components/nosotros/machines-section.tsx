@@ -49,64 +49,63 @@ const carouselImages = [
 const FADE_DURATION = 900
 const SLIDE_INTERVAL = 4000
 
-import useEmblaCarousel from "embla-carousel-react"
-
 function MachineImageCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 45 })
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [current, setCurrent] = useState(0)
+  const [next, setNext] = useState<number | null>(null)
 
   useEffect(() => {
-    if (!emblaApi) return
-    
     const interval = setInterval(() => {
-      emblaApi.scrollNext()
+      const nextIdx = (current + 1) % carouselImages.length
+      setNext(nextIdx)
+      setTimeout(() => {
+        setCurrent(nextIdx)
+        setNext(null)
+      }, FADE_DURATION)
     }, SLIDE_INTERVAL)
-
-    emblaApi.on("select", () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap())
-    })
-
     return () => clearInterval(interval)
-  }, [emblaApi])
+  }, [current])
 
-  const scrollTo = (index: number) => emblaApi?.scrollTo(index)
+  const goTo = (idx: number) => {
+    if (idx === current) return
+    setNext(idx)
+    setTimeout(() => {
+      setCurrent(idx)
+      setNext(null)
+    }, FADE_DURATION)
+  }
 
   return (
-    <div className="relative rounded-xl overflow-hidden shadow-xl h-full min-h-[300px] md:min-h-[460px] group">
-      {/* Embla Container */}
-      <div className="overflow-hidden h-full" ref={emblaRef}>
-        <div className="flex h-full">
-          {carouselImages.map((src, index) => (
-            <div
-              key={index}
-              className="relative flex-[0_0_100%] min-w-0 h-full"
-            >
-              <Image
-                src={src}
-                alt={`Maquinaria Metalúrgica Somoza ${index + 1}`}
-                fill
-                className="object-cover transition-opacity duration-1000 ease-in-out"
-                style={{ opacity: selectedIndex === index ? 1 : 0 }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                priority={index === 0}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
+    <div className="relative rounded-xl overflow-hidden shadow-xl h-full min-h-[300px] md:min-h-[460px]">
+      {/* Base image */}
+      <Image
+        src={carouselImages[current]}
+        alt={`Maquinaria Metalúrgica Somoza ${current + 1}`}
+        fill
+        className="object-cover"
+        sizes="33vw"
+      />
+      {/* Fading-in image */}
+      {next !== null && (
+        <Image
+          key={next}
+          src={carouselImages[next]}
+          alt={`Maquinaria Metalúrgica Somoza ${next + 1}`}
+          fill
+          className="object-cover animate-hero-fade-in"
+          style={{ animationDuration: `${FADE_DURATION}ms` }}
+          sizes="33vw"
+        />
+      )}
       {/* Overlay */}
-      <div className="absolute inset-0 bg-background/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-background/10" />
 
       {/* Dots */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {carouselImages.map((_, i) => (
           <button
             key={i}
-            onClick={() => scrollTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === selectedIndex ? "bg-accent w-5" : "bg-white/60 w-1.5 hover:bg-white/90"
-            }`}
+            onClick={() => goTo(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "bg-accent w-5" : "bg-white/60 w-1.5 hover:bg-white/90"}`}
             aria-label={`Imagen ${i + 1}`}
           />
         ))}
