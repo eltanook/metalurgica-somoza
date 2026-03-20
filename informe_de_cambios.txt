@@ -1,0 +1,43 @@
+# 📋 Informe de Cambios y Optimizaciones - Metalúrgica Somoza
+
+## 1. Secciones Ocultas Temporalmente (En espera de contenido)
+Para mantener la web con un aspecto 100% profesional y no mostrar contenido de relleno o roto, hemos comentado (ocultado) las siguientes secciones en la página de inicio (app/page.tsx):
+
+- Proyectos Destacados (<PortfolioSection />):
+  - Estado: Oculto en la Home.
+  - Motivo: Las imágenes estáticas no se estaban renderizando igual que en la página dedicada de "Proyectos". Estamos a la espera de conectar esta sección para que traiga (haga fetch) las imágenes dinámicas directamente desde Sanity CMS, garantizando consistencia en todo el sitio.
+
+- Videos Corporativos (<VideosSection />):
+  - Estado: Oculto en la Home (y en Servicios, si aplica).
+  - Motivo: A la espera de que el cliente proporcione los videos reales (por ejemplo, paneos de la fábrica, máquinas trabajando). Es mejor no mostrar la sección hasta tener el material audiovisual definitivo.
+
+---
+
+## 2. Solución de Problemas Críticos (Bugs y Layout Roto)
+- Fix del "Layout Aplastado" en Mobile: Resolvimos un bug generalizado donde la web entera se contraía al 50% izquierdo de la pantalla en celulares.
+  - Causa: Algunos contenedores y carruseles forzaban un ancho mayor a 600px en pantallas pequeñas.
+  - Solución: Se aplicaron bloqueos estrictos de desbordamiento horizontal (overflow-hidden, max-w-full) en contenedores globales.
+- Fix del Carrusel de Logos (Hero): Reparamos los difuminados (gradientes laterales) de la cinta de "Confían en nosotros". Ahora el scroll interno funciona sin extender la página, y los gradientes flotan perfectamente por encima.
+- Fix de Consola: Se solucionó un error fatal de compilación (Parsing ecmascript source code failed) en machines-section.tsx causado por un error de sintaxis en el código.
+
+---
+
+## 3. Adaptabilidad 100% Responsiva (Móvil y Tablet)
+- Títulos Inteligentes: Se redujo el tamaño de los títulos principales en móviles (ej. en "Sobre Nosotros") para que palabras largas como "COMPROMISO" no rompan la pantalla o queden cortadas.
+- Grillas en Tablet: Las secciones "Sobre Nosotros" y "Equipamiento" ahora detectan si estás en un iPad/Tablet y cambian a un elegante diseño de 2 columnas, aprovechando todo el espacio horizontal.
+- Alineación de Botones (CTAs): Siguiendo tus directrices, forzamos a que los botones ("Solicitar presupuesto", "Ver servicios") se pongan uno al lado del otro (alineados a la izquierda) en lugar de uno arriba del otro, siempre que el ancho del celular lo permita.
+- Navbar Adaptativo: El texto del logo "Metalúrgica Somoza" se mantiene visible en casi la totalidad de los teléfonos modernos (>440px de ancho) y se oculta inteligentemente solo en pantallas extremadamente estrechas.
+
+---
+
+## 4. Refinamientos Estéticos y de Interfaz (Modo Oscuro)
+- Footer Metálico Oscuro: Rediseñé los gradientes del fondo del footer. Pasó de ser un gris plano/tosco a tener un efecto cepillado en acero profundo y oscuro (#080a0c). Es sumamente elegante.
+- Badge "+60 años": Se alineó gráficamente con los botones principales (CTAs). Ahora su fondo metálico es exactamente del mismo tono que los botones, tanto en Light Mode como en Dark Mode.
+- Scrollbars del Sistema: Las barras de desplazamiento laterales del navegador fueron personalizadas; ahora son de color de acento azul en modo claro y de color blanco/plata en modo oscuro.
+
+---
+
+## 5. SEO Técnico y Visibilidad (Posicionamiento en Google)
+- Inyección de Palabras Clave (Keywords): Se amplió drásticamente el conjunto de keywords globales para atraer a tu público objetivo: "metalúrgica Versalles", "metalmecánica", "metalúrgica CABA", "mecanizado industrial Argentina" y derivados.
+- Metadatos Dedicados: Configuramos Títulos y Descripciones (Title & Description Tags) específicas de intención de búsqueda para las páginas de /inicio, /servicios y /contacto.
+- Infraestructura de Búsqueda: Se programó un Sitemap Dinámico (sitemap.ts) automatizado y reglas limpias en el archivo robots.txt para facilitar a Google la lectura, rastreo e indexación total de la página web.

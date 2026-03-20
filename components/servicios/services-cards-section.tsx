@@ -72,7 +72,7 @@ export function ServicesCardsSection() {
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
-            backgroundImage: "url('/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.jpg')",
+            backgroundImage: "url('/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.webp')",
           }}
         />
         {/* Dark overlay */}

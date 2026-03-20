@@ -8,10 +8,10 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 import { useEffect, useState } from "react"
 
 const heroImages = [
-  "/images/alerkiv-C2S_2gmmQlw-unsplash.jpg",
-  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg",
-  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.jpg",
-  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.jpg",
+  "/images/alerkiv-C2S_2gmmQlw-unsplash.webp",
+  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.webp",
+  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.webp",
+  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.webp",
 ]
 
 const FADE_DURATION = 1200 // ms

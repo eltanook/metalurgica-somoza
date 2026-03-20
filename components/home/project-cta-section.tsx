@@ -11,7 +11,7 @@ export function ProjectCTASection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: "url('/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg')",
+          backgroundImage: "url('/images/cemrecan-yurtman-enPxH6uqABg-unsplash.webp')",
         }}
       />
       {/* Dark overlay */}
