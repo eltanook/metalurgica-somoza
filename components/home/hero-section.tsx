@@ -36,22 +36,33 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Base image layer (current) — always visible, no transition needed */}
-      <div
-        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
-        style={{ backgroundImage: `url('${heroImages[current]}')` }}
-      />
+      {/* Base image layer (current) — always visible, optimized with Next.js Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={heroImages[current]}
+          alt="Metalúrgica Somoza Fondo"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+      </div>
 
       {/* Transitioning-in image (next) — fades in on top */}
       {next !== null && (
-        <div
-          className="absolute inset-0 bg-cover bg-center md:bg-fixed animate-hero-fade-in"
-          style={{ backgroundImage: `url('${heroImages[next]}')` }}
-        />
+        <div className="absolute inset-0 animate-hero-fade-in z-10">
+          <Image
+            src={heroImages[next]}
+            alt="Metalúrgica Somoza Fondo"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
       )}
 
       {/* Dark overlay — sits above both image layers */}
-      <div className="absolute inset-0 bg-background/60 dark:bg-background/80" />
+      <div className="absolute inset-0 bg-background/60 dark:bg-background/80 z-20" />
 
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.10)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.06)_1px,transparent_1px)] bg-[size:60px_60px]" />
