@@ -8,10 +8,10 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 import { useEffect, useState } from "react"
 
 const heroImages = [
-  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.webp",
-  "/images/alerkiv-C2S_2gmmQlw-unsplash.webp",
-  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.webp",
-  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.webp",
+  "/images/alerkiv-C2S_2gmmQlw-unsplash.jpg",
+  "/images/cemrecan-yurtman-enPxH6uqABg-unsplash.jpg",
+  "/images/cemrecan-yurtman-MU2wR8smaO4-unsplash.jpg",
+  "/images/hans-westbeek-qMTgBiOuGtQ-unsplash.jpg",
 ]
 
 const FADE_DURATION = 1200 // ms
@@ -115,12 +115,12 @@ export function HeroSection() {
             </div>
 
             {/* Mobile: auto-scrolling */}
-            <div className="md:hidden relative w-full overflow-x-hidden pt-4 pb-2">
-              {/* Fade gradients with backdrop blur for a natural look */}
-              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background/80 via-background/40 to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
-              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background/80 via-background/40 to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
-              
-              <div className="max-w-full overflow-hidden">
+            <div className="md:hidden relative w-full">
+              {/* Gradient fade overlays — sit on top of the scrolling track */}
+              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+              {/* Scrolling track — clips internally so page doesn't overflow */}
+              <div className="overflow-hidden w-full">
                 <div className="flex gap-12 animate-scroll-logos py-4 w-max">
                   {[...Array(3)].map((_, setIndex) => (
                     <div key={setIndex} className="flex gap-12 flex-shrink-0 items-center">
